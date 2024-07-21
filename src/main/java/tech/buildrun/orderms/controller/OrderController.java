@@ -8,6 +8,7 @@ import tech.buildrun.orderms.service.OrderService;
 import tech.buildrun.orderms.service.dto.*;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 @RestController
 public class OrderController {
@@ -24,17 +25,12 @@ public class OrderController {
                                                                   @RequestParam(name = "pageSize", defaultValue = "10") Integer pageSize) {
 
         Page<OrdersResponse> pageResponse = orderService.findAllCustomerId(customerId, PageRequest.of(page, pageSize));
+        BigDecimal totalOrdersByCustomer = orderService.getTotalOrdersByCustomer(customerId);
 
         return ResponseEntity.ok(new ApiResponse<>(
+                Map.of("totalPerOrders", totalOrdersByCustomer),
                 pageResponse.getContent(),
                 PaginationResponse.fromPage(pageResponse)
         ));
-    }
-
-    @GetMapping("/customers/{customerId}/orders/total")
-    public ResponseEntity<OrdersTotalByCustomerResponse> getTotalOrdersByCustomer(@PathVariable(name = "customerId") Long customerId) {
-
-        OrdersTotalByCustomerResponse totalOrdersByCustomer = orderService.getTotalOrdersByCustomer(customerId);
-        return ResponseEntity.ok(totalOrdersByCustomer);
     }
 }
