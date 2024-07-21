@@ -31,4 +31,16 @@ public class OrderEntity {
     public static OrderEntity newOrder(Long orderId, Long customerId, List<OrderItemEvent> items) {
         return new OrderEntity(orderId, customerId, items.stream().map(OrderItem::newOrderItem).toList());
     }
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
 }

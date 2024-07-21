@@ -22,11 +22,11 @@ public class OrderItem {
         this.price = price;
     }
 
-    public static OrderItem newOrderItem(OrderItemEvent itemEvent) {
+    static OrderItem newOrderItem(OrderItemEvent itemEvent) {
         return new OrderItem(itemEvent.produto(), itemEvent.quantidade(), itemEvent.preco());
     }
 
-    public BigDecimal getTotalPerProduct() {
+    BigDecimal getTotalPerProduct() {
         return this.price.multiply(BigDecimal.valueOf(this.quantity));
     }
 }
