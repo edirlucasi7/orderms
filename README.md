@@ -12,7 +12,7 @@ obs: Eu usei o MongoDB [Compass](https://www.mongodb.com/products/tools/compass)
 
 Para acessar o rabbitMQ acessa a porta: `http://localhost:15672/` e passar `guest` como username e password.
 
-* aqui é possível enviar um evento no payload para a fila[http://localhost:15672/#/queues/%2F/order-created](url), por exemplo:
+* aqui é possível enviar um evento no payload para a [fila](http://localhost:15672/#/queues/%2F/order-created), por exemplo:
 
   ```
    {
@@ -35,7 +35,7 @@ Para acessar o rabbitMQ acessa a porta: `http://localhost:15672/` e passar `gues
 
 No MongoDB Compass você pode checar se o evento foi consumido.
 
-É possível buscar o total de todos os pedidos por cliente: através da url: http://localhost:8081/customers/{customerId}/orders
+É possível buscar o total de todos os pedidos por cliente: através da [url](http://localhost:8081/customers/{customerId}/orders).
 
   
 
